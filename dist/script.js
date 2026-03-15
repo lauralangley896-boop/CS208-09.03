@@ -56,12 +56,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("lineupForm");
-    
-    if (form) {
-        form.addEventListener("submit", myLineUp);
-    } else {
-        console.error("Form with ID 'lineupForm' not found.");
+    const submitBtn = document.getElementById("submitBtn");
+    if (submitBtn) {
+        submitBtn.addEventListener("click", myLineUp);
     }
 });
 
@@ -71,24 +68,15 @@ function myLineUp(event) {
     const status = document.querySelector('input[name="status"]:checked').value;
     const gameDate = document.getElementById("gameDate").value;
     
-    const playerCheckboxes = document.querySelectorAll('input[name="players"]:checked');
-    let selectedPlayers = [];
-    playerCheckboxes.forEach(function(checkbox) {
-        selectedPlayers.push(checkbox.value);
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    let players = [];
+    checkboxes.forEach(function(box) {
+        players.push(box.value);
     });
-    
-    const playerListString = selectedPlayers.length > 0 ? selectedPlayers.join(", ") : "No players selected";
 
-    const finalResultString = `Lineup Status: ${status} | Game Date: ${gameDate} | Selected Players: ${playerListString}`;
+    console.log(status, gameDate, players);
 
-    console.log("--- Form Data Received ---");
-    console.log("Status:", status);
-    console.log("Date:", gameDate);
-    console.log("Players Array:", selectedPlayers);
-    console.log("Concatenated String:", finalResultString);
+    const combinedString = status + " " + gameDate + " " + players.join(" ");
 
-    const displayElement = document.getElementById("lineupDisplay");
-    if (displayElement) {
-        displayElement.textContent = finalResultString;
-    }
+    document.getElementById("lineupDisplay").textContent = combinedString;
 }

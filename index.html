@@ -12,13 +12,12 @@
 <body>
 <h1>Starting Lineup</h1>
 
-<form id="lineupForm">
+<form>
   <p>
     <fieldset>
       <legend>Status:</legend>
       <input type="radio" id="statusDraft" name="status" value="Draft">
       <label for="statusDraft">Draft</label>
-      
       <input type="radio" id="statusFinal" name="status" value="Final" checked>
       <label for="statusFinal">Final</label>
     </fieldset>
@@ -38,29 +37,25 @@
   <p>
     <fieldset>
       <legend>Players:</legend>
-      <input type="checkbox" id="player1" name="players" value="Aarav Agarwal">
+      <input type="checkbox" id="player1" value="Aarav Agarwal">
       <label for="player1">Aarav Agarwal</label><br>
-      
-      <input type="checkbox" id="player2" name="players" value="Ava Johnson">
+      <input type="checkbox" id="player2" value="Ava Johnson">
       <label for="player2">Ava Johnson</label><br>
-      
-      <input type="checkbox" id="player3" name="players" value="Julio Ortiz">
+      <input type="checkbox" id="player3" value="Julio Ortiz">
       <label for="player3">Julio Ortiz</label><br>
-      
-      <input type="checkbox" id="player4" name="players" value="Liam Rubio">
+      <input type="checkbox" id="player4" value="Liam Rubio">
       <label for="player4">Liam Rubio</label><br>
-      
-      <input type="checkbox" id="player5" name="players" value="Emma Witherspoon">
+      <input type="checkbox" id="player5" value="Emma Witherspoon">
       <label for="player5">Emma Witherspoon</label>
     </fieldset>
   </p>
 
   <p>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" id="submitBtn">
   </p>
 </form>
 
-<p id="lineupDisplay" style="font-weight: bold; margin-top: 20px;"></p>
+<p id="lineupDisplay"></p>
 </body>
 
 </html>
