@@ -54,3 +54,41 @@ document.addEventListener("DOMContentLoaded", function() {
             jokeDisplay.textContent = joke;
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("lineupForm");
+    
+    if (form) {
+        form.addEventListener("submit", myLineUp);
+    } else {
+        console.error("Form with ID 'lineupForm' not found.");
+    }
+});
+
+function myLineUp(event) {
+    event.preventDefault(); 
+
+    const status = document.querySelector('input[name="status"]:checked').value;
+    const gameDate = document.getElementById("gameDate").value;
+    
+    const playerCheckboxes = document.querySelectorAll('input[name="players"]:checked');
+    let selectedPlayers = [];
+    playerCheckboxes.forEach(function(checkbox) {
+        selectedPlayers.push(checkbox.value);
+    });
+    
+    const playerListString = selectedPlayers.length > 0 ? selectedPlayers.join(", ") : "No players selected";
+
+    const finalResultString = `Lineup Status: ${status} | Game Date: ${gameDate} | Selected Players: ${playerListString}`;
+
+    console.log("--- Form Data Received ---");
+    console.log("Status:", status);
+    console.log("Date:", gameDate);
+    console.log("Players Array:", selectedPlayers);
+    console.log("Concatenated String:", finalResultString);
+
+    const displayElement = document.getElementById("lineupDisplay");
+    if (displayElement) {
+        displayElement.textContent = finalResultString;
+    }
+}
